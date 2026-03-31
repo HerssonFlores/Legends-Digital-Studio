@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legend Digital Studio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #050b1a; /* AZUL OSCURO PRO */
+  color: white;
+}
+
+/* INTRO */
+.intro {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #050b1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  animation: fadeOut 2s ease 3s forwards;
+}
+
+/* ANIMACIÓN LOGO */
+.intro img {
+  width: 130px;
+  margin-bottom: 15px;
+  animation: logoIn 1.5s ease, float 3s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes logoIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotateY(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(0);
+  }
+}
+
+/* EFECTO 3D SUAVE */
+@keyframes float {
+  0% { transform: translateY(0px) rotateX(0deg); }
+  50% { transform: translateY(-8px) rotateX(10deg); }
+  100% { transform: translateY(0px) rotateX(0deg); }
+}
+
+@keyframes fadeOut {
+  to {opacity:0; visibility:hidden;}
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  width: 100%;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+}
+
+.nav img {
+  width: 35px;
+  transition: 0.3s;
+}
+
+.nav img:hover {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 45px;
+  color: #00f7ff;
+}
+
+.hero p {
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* BOTONES */
+.btn {
+  padding: 12px 20px;
+  border-radius: 30px;
+  display: inline-block;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.btn:active {
+  transform: scale(0.9);
+}
+
+.btn-main {
+  background: linear-gradient(45deg, #00f7ff, #00ff99);
+  color: black;
+}
+
+.btn-instagram {
+  background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
+  color: white;
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+.social {
+  margin-top: 10px;
+}
+
+/* SECCIÓN */
+.section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* PAQUETES */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  width: 280px;
+  padding: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:nth-child(1){background: linear-gradient(145deg,#0f2a5c,#1c4fa3);}
+.card:nth-child(2){background: linear-gradient(145deg,#123b6e,#2c7be5);}
+.card:nth-child(3){background: linear-gradient(145deg,#081c3a,#0a58ca);}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.detalles {
+  display: none;
+  margin-top: 10px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.card.active .detalles {
+  display: block;
+}
+
+.mantenimiento {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.2);
+}
+
+/* TESTIMONIOS */
+.testimonio {
+  background: rgba(255,255,255,0.05);
+  padding: 10px;
+  border-radius: 10px;
+  width: 220px;
+  font-size: 13px;
+}
+
+/* BOTÓN FLOTANTE */
+.float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 0 15px #25D366;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .hero h1 {font-size:32px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div class="intro">
+  <img src="logo.png.jpeg">
+  <h1>Legend Digital Studio</h1>
+  <p>Transformando ideas en experiencias digitales</p>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <img src="logo.png.jpeg">
+  <h2>Legend</h2>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Legend Digital Studio</h1>
+    <p>
+     Creamos experiencias digitales que no solo se ven bien, sino que venden.
+      Diseñamos páginas web modernas, rápidas y enfocadas en convertir visitantes en clientes reales.
+      Si tu negocio no está en internet, estás perdiendo oportunidades todos los días.
+    </p>
+
+    <a class="btn btn-main">Contáctame</a>
+
+    <div class="social">
+      <a class="btn btn-instagram" href="https://instagram.com/TU_USUARIO">Instagram</a>
+      <a class="btn btn-whatsapp" href="https://wa.me/5215528716239">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- PAQUETES -->
+<section class="section">
+  <h2>Paquetes</h2>
+  <div class="cards">
+
+    <div class="card" onclick="toggle(this)">
+      <h3>Básico</h3>
+      <p>$1500</p>
+      <div class="detalles">
+        ✔ Página<br>✔ Diseño<br>✔ WhatsApp<br>✔ Móvil<br>✔ Rápido
+        <div class="mantenimiento">+$200 mantenimiento</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+      <h3>Pro</h3>
+      <p>$2000</p>
+      <div class="detalles">
+        ✔ Todo básico<br>✔ Animaciones<br>✔ SEO<br>✔ Diseño<br>✔ Soporte
+        <div class="mantenimiento">+$200 mantenimiento</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggle(this)">
+      <h3>Premium</h3>
+      <p>$3000</p>
+      <div class="detalles">
+        ✔ Todo<br>✔ Sistema<br>✔ UI/UX<br>✔ Integraciones<br>✔ Profesional
+        <div class="mantenimiento">+$200 mantenimiento</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="section">
+  <h2>Testimonios</h2>
+  <div class="cards">
+    <div class="testimonio">"Muy profesional"<br><b>Juan Pérez</b><br><small>juanperez@gmail.com</small></div>
+    <div class="testimonio">"Excelente servicio"<br><b>Ana López</b><br><small>analopez@gmail.com</small></div>
+    <div class="testimonio">"Me ayudó mucho"<br><b>Carlos Ruiz</b><br><small>carlosruiz@gmail.com</small></div>
+    <div class="testimonio">"Recomendado"<br><b>Sofía Díaz</b><br><small>sofia@gmail.com</small></div>
+    <div class="testimonio">"Gran trabajo"<br><b>Luis Gómez</b><br><small>luis@gmail.com</small></div>
+  </div>
+</section>
+
+<!-- BOTÓN FLOTANTE -->
+<a href="https://wa.me/5215528716239" class="float">💬</a>
+
+<script>
+function toggle(el){
+  let cards=document.querySelectorAll('.card');
+  cards.forEach(c=>{ if(c!==el){c.classList.remove('active')} });
+  el.classList.toggle('active');
+}
+</script>
+
+</body>
+</html>
