@@ -432,20 +432,19 @@ body::before {
 }
 
 .sticky-cta {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  position: static;
+  margin-top: 28px;
   width: 100%;
-  z-index: 9997;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
+  padding: 16px;
   background: rgba(2, 8, 27, 0.88);
   backdrop-filter: blur(9px);
-  border-top: 1px solid rgba(0, 255, 255, 0.25);
-  animation: ctaSlide 0.4s ease forwards;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 255, 255, 0.25);
 }
 
 .sticky-cta p {
@@ -453,7 +452,7 @@ body::before {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 600;
   color: #e8ffff;
-  font-size: 0.92rem;
+  font-size: 0.94rem;
 }
 
 .sticky-cta a {
