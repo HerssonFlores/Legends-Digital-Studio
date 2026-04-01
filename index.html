@@ -4,15 +4,58 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Legend Digital Studio</title>
+<meta name="description" content="Legend Digital Studio diseña páginas web modernas, rápidas y enfocadas en convertir visitantes en clientes. Servicios de diseño web, ecommerce, landing y branding." />
+<meta name="author" content="Legend Digital Studio" />
+<meta name="theme-color" content="#020617" />
+<link rel="manifest" href="manifest.json" />
+<link rel="apple-touch-icon" href="icon-192x192.png" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta property="og:title" content="Legend Digital Studio | Diseño Web Profesional" />
+<meta property="og:description" content="Diseño web moderno, optimización SEO y experiencia digital que convierte visitantes en clientes." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://example.com/og-image.png" />
+<meta property="og:url" content="https://example.com/legend_digital_studio.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #050b1a; /* AZUL OSCURO PRO */
   color: white;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #0f3a74, #0d2d5c, #081f45, #030a27, #020617);
+  font-weight: 300;
+  letter-spacing: 0.015em;
+  background-size: 400% 400%;
+  animation: fondoAnimado 20s ease infinite;
+}
+
+@keyframes fondoAnimado {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.15), transparent 40%),
+              radial-gradient(circle at 80% 70%, rgba(20, 255, 170, 0.15), transparent 35%);
+  animation: neonGlow 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes neonGlow {
+  0%, 100% { transform: translate(0,0) scale(1); opacity: 0.8; filter: hue-rotate(0deg); }
+  25% { transform: translate(10px,-8px) scale(1.02); opacity: 0.9; filter: hue-rotate(30deg); }
+  50% { transform: translate(-10px,8px) scale(1.01); opacity: 0.75; filter: hue-rotate(60deg); }
+  75% { transform: translate(8px,10px) scale(1.03); opacity: 0.85; filter: hue-rotate(45deg); }
 }
 
 /* INTRO */
@@ -67,8 +110,11 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(10px);
+  background: rgba(5, 11, 34, 0.65);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  z-index: 9998;
 }
 
 .nav img {
@@ -82,22 +128,74 @@ body {
 
 /* HERO */
 .hero {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 20px;
+  width: 100%;
+}
+
+.hero > div {
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero h1,
+.hero p,
+.section h2,
+.section .cards,
+.testimonio {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .hero h1 {
-  font-size: 45px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 4rem);
   color: #00f7ff;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 1.11rem;
+  letter-spacing: 0.01em;
 }
 
 .hero p {
   max-width: 600px;
   line-height: 1.6;
+}
+
+/* ICONOS SVG */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 255, 255, 0.22);
+  color: #0ff;
+  box-shadow: 0 0 14px rgba(0, 255, 255, 0.18);
+  margin-right: 8px;
+}
+
+.icon svg,
+.icon i {
+  width: 16px;
+  height: 16px;
 }
 
 /* BOTONES */
@@ -106,17 +204,44 @@ body {
   border-radius: 30px;
   display: inline-block;
   margin-top: 10px;
-  transition: 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(0);
+  border-radius: 30px;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.btn:hover:before {
+  transform: scale(1.4);
+  opacity: 1;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 18px rgba(0, 255, 255, 0.25);
 }
 
 .btn:active {
-  transform: scale(0.9);
+  transform: scale(0.96);
+  box-shadow: 0 6px 12px rgba(0, 255, 255, 0.2);
 }
 
 .btn-main {
   background: linear-gradient(45deg, #00f7ff, #00ff99);
   color: black;
 }
+
 
 .btn-instagram {
   background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
@@ -136,6 +261,26 @@ body {
 .section {
   padding: 60px 20px;
   text-align: center;
+  background: rgba(10, 18, 50, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+.section > div, .cards {
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+.section h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 /* PAQUETES */
@@ -152,6 +297,9 @@ body {
   border-radius: 15px;
   cursor: pointer;
   transition: 0.3s;
+  background: rgba(10, 18, 50, 0.35);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(5px);
 }
 
 .card:nth-child(1){background: linear-gradient(145deg,#0f2a5c,#1c4fa3);}
@@ -180,6 +328,64 @@ body {
   background: rgba(255,255,255,0.2);
 }
 
+/* CASE STUDY */
+.case-filters {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.case-filters .filter {
+  padding: 10px 18px;
+  min-width: 95px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.case-filters .filter.active,
+.case-filters .filter:hover {
+  background: rgba(0,255,255,0.25);
+  border-color: rgba(0,255,255,0.7);
+  color: #020617;
+}
+
+.case-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 18px;
+}
+
+.case-card {
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(17, 29, 65, 0.45);
+  border: 1px solid rgba(0,255,255,0.14);
+  backdrop-filter: blur(6px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.case-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 22px rgba(0,255,255,0.25);
+}
+
+.case-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.case-card p {
+  font-size: 0.93rem;
+  color: #d8eaff;
+}
+
 /* TESTIMONIOS */
 .testimonio {
   background: rgba(255,255,255,0.05);
@@ -191,42 +397,138 @@ body {
 
 /* BOTÓN FLOTANTE */
 .float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+  position: static;
+  margin-left: 12px;
   background: #25D366;
-  padding: 15px;
+  padding: 10px 12px;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
   text-decoration: none;
-  box-shadow: 0 0 15px #25D366;
+  box-shadow: 0 0 14px #25D366;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* RESPONSIVE */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9997;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(2, 8, 27, 0.88);
+  backdrop-filter: blur(9px);
+  border-top: 1px solid rgba(0, 255, 255, 0.25);
+  animation: ctaSlide 0.4s ease forwards;
+}
+
+.sticky-cta p {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  color: #e8ffff;
+  font-size: 0.92rem;
+}
+
+.sticky-cta a {
+  padding: 10px 16px;
+  border-radius: 22px;
+  background: linear-gradient(45deg, #00f5ff, #03cc8d);
+  color: #042d41;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sticky-cta a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 255, 255, 0.35);
+}
+
+@keyframes ctaSlide {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@media(max-width:1024px){
+  .nav {padding: 12px 16px;}
+  .hero {padding: 18px;}
+  .section {padding: 45px 16px;}
+  .cards {gap: 14px;}
+  .card {width: calc(50% - 14px);}
+  .case-cards {grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));}
+  .case-filters {gap: 12px; flex-wrap: wrap;}
+  .sticky-cta {padding: 10px 12px;}
+}
+
+@media(max-width:768px){
+  .hero h1 {font-size: clamp(1.8rem, 6vw, 2.4rem);}
+  .hero p {font-size: 0.98rem;}
+  .cards {gap: 12px;}
+  .card {width: 100%;}
+  .nav {justify-content: center;}
+  .nav h2 {display: none;}
+  .case-filters {justify-content: center;}
+  .sticky-cta {flex-direction: column; align-items: stretch; gap: 8px;}
+  .sticky-cta a {width: 100%; text-align: center;}
+}
+
 @media(max-width:600px){
-  .hero h1 {font-size:32px;}
+  .hero h1 {font-size: 2rem;}
+  .hero p {font-size: 0.92rem; font-weight: 400;}
+  .section {padding: 35px 10px;}
+  .sticky-cta {padding: 10px 10px;}
+  .sticky-cta p {font-size: 0.76rem;}
+  .case-filters .filter {padding: 8px 12px; min-width: 80px;}
+  .cards {gap: 10px;}
 }
 </style>
 </head>
 
 <body>
+<canvas id="particle-canvas"></canvas>
 
 <!-- INTRO -->
 <div class="intro">
-  <img src="logo.png.jpeg">
+  <img src="logo.png.jpeg" loading="lazy" alt="Legend Digital Studio logo">
   <h1>Legend Digital Studio</h1>
   <p>Transformando ideas en experiencias digitales</p>
 </div>
 
 <!-- NAV -->
-<div class="nav">
-  <img src="logo.png.jpeg">
+<div class="nav" role="navigation" aria-label="Menú principal">
+  <img src="logo.png.jpeg" loading="lazy" alt="Legend logo">
   <h2>Legend</h2>
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero animate-on-scroll">
   <div>
     <h1>Legend Digital Studio</h1>
     <p>
@@ -234,7 +536,7 @@ body {
       Diseñamos páginas web modernas, rápidas y enfocadas en convertir visitantes en clientes reales.
       Si tu negocio no está en internet, estás perdiendo oportunidades todos los días.
     </p>
-
+<br>
     <a class="btn btn-main">Contáctame</a>
 
     <div class="social">
@@ -245,7 +547,7 @@ body {
 </section>
 
 <!-- PAQUETES -->
-<section class="section">
+<section class="section animate-on-scroll">
   <h2>Paquetes</h2>
   <div class="cards">
 
@@ -279,8 +581,38 @@ body {
   </div>
 </section>
 
+<!-- CASOS DE ÉXITO -->
+<section class="section case-study animate-on-scroll">
+  <h2>Casos de éxito</h2>
+  <div class="case-filters">
+    <button class="filter active" data-filter="all">Todo</button>
+    <button class="filter" data-filter="web">Web</button>
+    <button class="filter" data-filter="ecommerce">eCommerce</button>
+    <button class="filter" data-filter="landing">Landing</button>
+  </div>
+  <br>
+  <div class="case-cards">
+    <div class="case-card" data-category="web">
+      <h3><span class="icon"><i class="fas fa-globe"></i></span>Portafolio Profesional</h3>
+      <p>Creación de una web moderna con animaciones y CMS ligero.</p>
+    </div>
+    <div class="case-card" data-category="ecommerce">
+      <h3><span class="icon"><i class="fas fa-shopping-cart"></i></span>Tienda Digital</h3>
+      <p>Diseño de eCommerce optimizado para conversiones y pagos rápidos.</p>
+    </div>
+    <div class="case-card" data-category="landing">
+      <h3><span class="icon"><i class="fas fa-bullseye"></i></span>Landing de Captura</h3>
+      <p>Landing page con CTA constante y más de 35% en CVR.</p>
+    </div>
+    <div class="case-card" data-category="web">
+      <h3><span class="icon"><i class="fas fa-paint-brush"></i></span>Branding Web</h3>
+      <p>Rebranding y rediseño de sitio con SEO técnico incluido.</p>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIOS -->
-<section class="section">
+<section class="section animate-on-scroll">
   <h2>Opiniones recientes</h2>
   <div class="cards">
     <div class="testimonio">"Quedé bastante satisfecho con el diseño de la página. Es clara, fácil de navegar y refleja bien la identidad de mi negocio."<br><b>Juan Pérez</b><br><small>juanperez@gmail.com</small></div>
@@ -292,13 +624,115 @@ body {
 </section>
 
 <!-- BOTÓN FLOTANTE -->
-<a href="https://wa.me/5215528716239" class="float">💬</a>
+<div class="sticky-cta">
+  <p>¿Quieres tu pagina web lista en menos de una semana?</p>
+  <div>
+    <a href="https://wa.me/5215528716239">Contrátame ya</a>
+    <a href="https://wa.me/5215528716239" class="float">💬</a>
+  </div>
+</div>
 
 <script>
 function toggle(el){
   let cards=document.querySelectorAll('.card');
   cards.forEach(c=>{ if(c!==el){c.classList.remove('active')} });
   el.classList.toggle('active');
+}
+
+// Scroll reveal animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+document.querySelectorAll('.animate-on-scroll').forEach(item => {
+  observer.observe(item);
+});
+
+// Particle background for hero
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function setCanvasSize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function createParticles() {
+  particles = [];
+  const count = Math.round(window.innerWidth / 14);
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2.5 + 0.8,
+      speedX: (Math.random() - 0.5) * 0.6,
+      speedY: (Math.random() - 0.5) * 0.6,
+      alpha: Math.random() * 0.5 + 0.2
+    });
+  }
+}
+
+function drawParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (const p of particles) {
+    p.x += p.speedX;
+    p.y += p.speedY;
+    if (p.x < -20) p.x = canvas.width + 20;
+    if (p.x > canvas.width + 20) p.x = -20;
+    if (p.y < -20) p.y = canvas.height + 20;
+    if (p.y > canvas.height + 20) p.y = -20;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(35, 235, 255, ${p.alpha})`;
+    ctx.fill();
+  }
+}
+
+function animateParticles() {
+  drawParticles();
+  requestAnimationFrame(animateParticles);
+}
+
+window.addEventListener('resize', () => {
+  setCanvasSize();
+  createParticles();
+});
+
+document.querySelectorAll('.case-filters .filter').forEach((button) => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.case-filters .filter').forEach((btn) => btn.classList.remove('active'));
+    button.classList.add('active');
+    const category = button.dataset.filter;
+    document.querySelectorAll('.case-card').forEach((card) => {
+      if (category === 'all' || card.dataset.category === category) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+setCanvasSize();
+createParticles();
+animateParticles();
+
+// PWA: register service worker if available
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('ServiceWorker registrado con scope:', reg.scope))
+      .catch(err => console.warn('ServiceWorker no pudo registrar:', err));
+  });
 }
 </script>
 
