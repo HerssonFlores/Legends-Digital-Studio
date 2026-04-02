@@ -106,7 +106,12 @@ body::before {
 .nav {
   position: fixed;
   width: 100%;
-  padding: 15px 20px;
+  padding: 15px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 👈 IMPORTANTE */
+  gap: 10px;
+  box-sizing: border-box; /* 👈 MUY IMPORTANTE */
   display: flex;
   align-items: center;
   gap: 10px;
@@ -115,6 +120,12 @@ body::before {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.14);
   z-index: 9998;
+}
+
+.menu {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap; /* 👈 evita que se rompa en móvil */
 }
 
 .nav img {
@@ -734,6 +745,47 @@ body::before {
   .process-steps {gap: 10px;}
   .step {width: 100%; max-width: 280px;}
 }
+
+.card, .feature-card, .step {
+  transition: all 0.3s ease;
+}
+
+.card:hover, .feature-card:hover, .step:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 30px rgba(0,255,255,0.2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.menu {
+  margin-left: auto;
+  display: flex;
+  gap: 18px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  position: relative;
+}
+.menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #00f7ff;
+  transition: 0.3s;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
 </style>
 </head>
 
@@ -750,7 +802,16 @@ body::before {
 <!-- NAV -->
 <div class="nav" role="navigation" aria-label="Menú principal">
   <img src="logo.png.jpeg" style="background:transparent;" alt="logo">
-  <h2>Legend</h2>
+  <h2>Legends</h2>
+
+  <div class="menu">
+    <a href="#paquetes">Paquetes</a>
+    <a href="#¿por que elegirme?">¿Por que elegirme?</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <img src="logo.png.jpeg" style="background:transparent;" alt="logo">
+  <h2>Legends</h2>
 </div>
 
 <!-- HERO -->
@@ -777,7 +838,7 @@ Yo puedo hacerte una desde cero 🚀</h3>
 </section>
 
 <!-- PAQUETES -->
-<section class="section animate-on-scroll">
+<section id="paquetes" class="section animate-on-scroll">
   <h2>Paquetes</h2>
   <div class="cards">
 
@@ -812,7 +873,7 @@ Yo puedo hacerte una desde cero 🚀</h3>
 </section>
 
 <!-- CASOS DE ÉXITO -->
-<section class="section case-study animate-on-scroll">
+ <section class="section animate-on-scroll">
   <h2>Casos de éxito</h2>
   <div class="case-filters">
     <button class="filter active" data-filter="all">Todo</button>
@@ -842,7 +903,7 @@ Yo puedo hacerte una desde cero 🚀</h3>
 </section>
 
 <!-- POR QUÉ ELEGIRME -->
-<section class="section animate-on-scroll">
+    <section id="¿por que elegirme?" class="section case-study animate-on-scroll">
   <h2>¿Por qué elegirme?</h2>
   <div class="why-choose">
     <div class="why-item">
@@ -896,7 +957,7 @@ Yo puedo hacerte una desde cero 🚀</h3>
 </section>
 
 <!-- PROCESO DE TRABAJO -->
-<section class="section animate-on-scroll">
+ <section id="proceso" class="section animate-on-scroll">
   <h2>Proceso de trabajo</h2>
   <div class="process-steps">
     <div class="step">
@@ -921,16 +982,35 @@ Yo puedo hacerte una desde cero 🚀</h3>
     </div>
   </div>
   <br>
-  <a class="btn btn-main">Contáctame</a>
 
-    <div class="social">
-  <a class="btn btn-instagram" href="https://instagram.com/legend_webs_studio">Instagram</a>
-  <a class="btn btn-whatsapp" href="https://wa.me/5215528716239">WhatsApp</a>
-  <a class="btn btn-tiktok" href="https://tiktok.com/@legends_web">TikTok</a>
-</div>
+<!-- CONTACTO -->
+<section id="contacto" class="section animate-on-scroll">
+  <h2>Contacto</h2>
+  <p>¿Listo para llevar tu negocio al siguiente nivel?</p>
+
+  <div class="cards">
+    <div class="feature-card">
+      <h3>WhatsApp</h3>
+      <p>Respuesta rápida y directa</p>
+      <a href="https://wa.me/5215528716239" class="btn btn-whatsapp">Escríbeme</a>
+    </div>
+
+    <div class="feature-card">
+      <h3>Instagram</h3>
+      <p>Mira más de mi trabajo</p>
+      <a href="https://instagram.com/legend_webs_studio" class="btn btn-instagram">Ver perfil</a>
+    </div>
+
+    <div class="feature-card">
+      <h3>TikTok</h3>
+      <p>Contenido y tips de diseño</p>
+      <a href="https://tiktok.com/@legends_web" class="btn btn-tiktok">Seguir</a>
+    </div>
+  </div>
 </section>
 
 <!-- BOTÓN FLOTANTE -->
+<br>
 <div class="sticky-cta">
   <p>Haz crecer tu negocio hoy y consigue más clientes con una página profesional</p>
   <div>
