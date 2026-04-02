@@ -840,33 +840,46 @@ Yo puedo hacerte una desde cero 🚀</h3>
 <!-- PAQUETES -->
 <section id="paquetes" class="section animate-on-scroll">
   <h2>Paquetes</h2>
+  <h2>Calcula tu precio</h2>
+  <p>Selecciona lo que necesitas y obtén un precio estimado al instante </p>
+
   <div class="cards">
 
-    <div class="card" onclick="toggle(this)">
-      <h3>Básico</h3>
-      <p>De $500 a $1000</p>
-      <div class="detalles">
-        ✔ Página<br>✔ Diseño<br>✔ WhatsApp<br>✔ Móvil<br>✔ Rápido
-        <div class="mantenimiento">(opcional)+$200 mensualmente de mantenimiento</div>
-      </div>
+    <div class="feature-card">
+      <label>Tipo de página:</label><br><br>
+      <select id="tipo">
+        <option value="basico">Básico - $500 </option>
+        <option value="pro">Pro - $1200</option>
+        <option value="premium">Premium - $3000</option>
+      </select>
     </div>
 
-    <div class="card" onclick="toggle(this)">
-      <h3>Pro</h3>
-      <p>De $1200 a $2000</p>
-      <div class="detalles">
-        ✔ Todo básico<br>✔ Animaciones<br>✔ SEO<br>✔ Diseño<br>✔ Soporte
-        <div class="mantenimiento">(opcional)+$200 mensualmente de mantenimiento</div>
-      </div>
+    <div class="feature-card">
+      <label>EXTRAS:</label><br>
+      <label>
+  <label>
+  <input type="checkbox" value="SEO" data-precio="300"> SEO $300
+</label>
+<br>
+<label>
+  <input type="checkbox" value="Animaciones" data-precio="200"> Animaciones $200
+</label>
+<br>
+<label>
+  <input type="checkbox" value="Ubicacion" data-precio="100"> Ubicación $100
+</label>
+<br>
+<label>
+  <input type="checkbox" value="Mantenimiento mensual" data-precio="200">
+  Mantenimiento $200 mensualmente(OPCIONAL)
+</label>
+</label>
     </div>
 
-    <div class="card" onclick="toggle(this)">
-      <h3>Premium</h3>
-      <p>$3000</p>
-      <div class="detalles">
-        ✔ Todo<br>✔ Sistema<br>✔ UI/UX<br>✔ Integraciones<br>✔ Profesional
-        <div class="mantenimiento">(opcional)+$200 mensualmente de mantenimiento</div>
-      </div>
+    <div class="feature-card">
+     <br> <button onclick="enviarWhatsApp()" type="button" class="btn btn-main">
+  <h4>Solicitar ahora</h4>
+</button>
     </div>
 
   </div>
@@ -1139,6 +1152,100 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.warn('ServiceWorker no pudo registrar:', err));
   });
 }
+
+const tipo = document.getElementById('tipo');
+const extras = document.querySelectorAll('.extra');
+const precio = document.getElementById('precioTotal');
+
+function calcularTotal() {
+  let total = 0;
+
+  // Obtener paquete
+  let tipo = document.getElementById("tipo")?.value;
+
+  if (tipo === "basico") total += 500;
+  else if (tipo === "pro") total += 1200;
+  else if (tipo === "premium") total += 3000;
+
+  // Extras (ANTI NaN)
+  document.querySelectorAll('input[type=checkbox]:checked').forEach(el => {
+    let precio = Number(el.dataset.precio);
+
+    if (!isNaN(precio)) {
+      total += precio;
+    }
+  });
+
+  // Mostrar total
+  document.getElementById("total").innerText = "$" + total + " MXN";
+}
+
+tipo.addEventListener('change', calcularPrecio);
+extras.forEach(extra => {
+  extra.addEventListener('change', calcularPrecio);
+});
+
+function enviarWhatsApp() {
+  let tipoSelect = document.getElementById("tipo");
+
+  if (!tipoSelect) {
+    alert("Error: no se encontró el selector de paquete");
+    return;
+  }
+
+  let tipo = tipoSelect.value;
+  let total = 0;
+
+  let paqueteNombre = "";
+  let paquetePrecio = 0;
+
+  if (tipo === "basico") {
+    paqueteNombre = "Básico";
+    paquetePrecio = 500;
+  } else if (tipo === "pro") {
+    paqueteNombre = "Pro";
+    paquetePrecio = 1200;
+  } else if (tipo === "premium") {
+    paqueteNombre = "Premium";
+    paquetePrecio = 3000;
+  }
+
+  total += paquetePrecio;
+
+  let extrasTexto = "";
+  let extrasTotal = 0;
+
+  document.querySelectorAll('input[type=checkbox]:checked').forEach(el => {
+    let nombre = el.value || "Extras";
+    let precio = parseInt(el.dataset.precio) || 0;
+
+    extrasTexto += `• ${nombre} - $${precio} MXN\n`;
+    extrasTotal += precio;
+  });
+
+  if (extrasTexto === "") {
+    extrasTexto = "Sin extras\n";
+  }
+
+  total += extrasTotal;
+
+  let mensaje = `Hola, quiero una página web 
+
+ Paquete elegido:
+${paqueteNombre} - $${paquetePrecio} MXN
+
+ Extras:
+${extrasTexto}
+
+ Total estimado:
+$${total} MXN
+
+Me gustaría más información `;
+
+  let url = `https://wa.me/5215528716239?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+}
+
 </script>
 
 </body>
