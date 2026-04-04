@@ -22,6 +22,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
+
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -786,6 +788,66 @@ html {
   width: 100%;
 }
 
+.footer {
+  margin-top: 40px;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  background: rgba(2, 8, 27, 0.8);
+  border-top: 1px solid rgba(0,255,255,0.2);
+}
+
+.footer-links {
+  margin: 10px 0;
+}
+
+.footer-links a {
+  color: #00f7ff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-mini {
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+.footer {
+  margin-top: 40px;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  background: rgba(2, 8, 27, 0.8);
+  border-top: 1px solid rgba(0,255,255,0.2);
+}
+
+.footer-links {
+  margin: 10px 0;
+}
+
+.footer-links a {
+  color: #00f7ff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-mini {
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
 
 
 </style>
@@ -967,9 +1029,32 @@ Yo puedo hacerte una desde cero 🚀</h3>
      <br> <button onclick="enviarWhatsApp()" type="button" class="btn btn-main">
   <h4>Solicitar ahora</h4>
 </button>
+
     </div>
 
   </div>
+</section>
+
+<!-- MÉTODOS DE PAGO -->
+<section class="section">
+  <h2>Métodos de pago</h2>
+  <p>Puedes pagar mediante:</p>
+
+  <div class="cards">
+    <div class="feature-card">
+      <h3>Transferencia bancaria</h3>
+      <p>BBVA / Mercado Pago</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>OXXO</h3>
+      <p>Depósito en efectivo</p>
+    </div>
+  
+<p style="margin-top:15px; font-size:14px; opacity:0.8;">
+🔒 Pagos 100% seguros | Entrega garantizada | Soporte incluido
+</p>
+
 </section>
 
 <!-- PROCESO DE TRABAJO -->
@@ -1032,7 +1117,8 @@ Yo puedo hacerte una desde cero 🚀</h3>
       <p>Respuesta rápida y directa</p>
       <a href="https://wa.me/5215528716239" class="btn btn-whatsapp">Escríbeme</a>
     </div>
-    
+</section>
+
 <!-- GARANTÍA -->
 <section class="section">
   <h2>Garantía</h2>
@@ -1171,38 +1257,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const tipo = document.getElementById('tipo');
-const extras = document.querySelectorAll('.extra');
-const precio = document.getElementById('precioTotal');
-
-function calcularTotal() {
-  let total = 0;
-
-  // Obtener paquete
-  let tipo = document.getElementById("tipo")?.value;
-
-  if (tipo === "basico") total += 500;
-  else if (tipo === "pro") total += 1200;
-  else if (tipo === "premium") total += 3000;
-
-  // Extras (ANTI NaN)
-  document.querySelectorAll('input[type=checkbox]:checked').forEach(el => {
-    let precio = Number(el.dataset.precio);
-
-    if (!isNaN(precio)) {
-      total += precio;
-    }
-  });
-
-  // Mostrar total
-  document.getElementById("total").innerText = "$" + total + " MXN";
-}
-
-tipo.addEventListener('change', calcularPrecio);
-extras.forEach(extra => {
-  extra.addEventListener('change', calcularPrecio);
-});
-
 function enviarWhatsApp() {
   let tipoSelect = document.getElementById("tipo");
 
@@ -1264,7 +1318,22 @@ Me gustaría más información `;
   window.open(url, "_blank");
 }
 
+
+
 </script>
+
+<footer class="footer">
+  <p>© 2026 Legend Digital Studio. Todos los derechos reservados.</p>
+
+  <div class="footer-links">
+    <a href="#">Aviso de privacidad</a>
+    <a href="#">Términos y condiciones</a>
+  </div>
+
+  <p class="footer-mini">
+    Diseño web profesional enfocado en resultados | México 🚀
+  </p>
+</footer>
 
 </body>
 </html>
